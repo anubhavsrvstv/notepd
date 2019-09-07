@@ -65,25 +65,6 @@ router.post('/contact',(req,res, next)=>{
     })
 });
 
-
-$scope.dataUpdate = function () {
-    console.log("response");
-    $http({
-        method : "Update",
-          url : 'http://localhost:3000/updatedata'
-      }).then(function mySuccess(response) {
-        $scope.data = response.data.data;
-        console.log(response);
-
-      }, function myError(err) {
-          console.log(err);
-      });
-};
-
-
-
-
-
 router.delete('/deleteData', function (req, res) {
     console.log("idddddddddd", req.headers.id);
     // mydb.collection("formTest").deleteOne({ _id: req.headers.id }, function (err, obj) {
