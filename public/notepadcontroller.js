@@ -38,22 +38,30 @@ app.controller('notepadCtrl', function($scope,$http, $window) {
   
 
 
-  $scope.dataUpdate = function () {
-    console.log("response");
-    // $http({
-    //     method : "Update",
-    //       url : 'http://localhost:3000/updatedata'
-    //   }).then(function mySuccess(response) {
-    //     $scope.data = response.data.data;
-    //     console.log(response);
-  
-    //   }, function myError(err) {
-    //       console.log(err);
-    //     // $scope.myWelcome = response.statusText;
-    //   });
-  };
-  
-  
+
+  $scope.dataUpdate = function (id,newdata) {
+    console.log("id",id,newdata);
+    $http({
+      method : "PUT",
+      url : 'api/updateData',
+     // data:{'id':id,'data':newdata},
+      headers: { 'id':id,'data':newdata,'Content-Type': 'application/json', 'Cache-Control': 'no-cache'}
+    }).then(function (response) {
+      // $scope.data = response.data
+      console.log(response);
+      $window.location.reload()
+    }, function (error) {
+      console.log(err)
+      // $scope.myWelcome = response.statusText;
+
+    });
+  }
+
+
+
+
+
+
   $scope.removeData = function (id) {
     console.log("id",id);
     $http({

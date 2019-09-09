@@ -43,9 +43,23 @@ router.get('/getdata', function (req, res){
     });
 });
 
-    
 
-router.post('/contact',(req,res, next)=>{
+
+router.put('/updateData', function (req, res) {
+    console.log("datavalue in body",req.headers);
+
+
+Notepad.update({ _id: req.headers.id },{notes:req.headers.data},function (err, response) {
+    if (err) throw err;
+    else {
+        console.log("data", response);
+        res.setHeader('Content-Type', 'application/json');
+        res.json({data: response});
+    }
+});
+})
+
+        router.post('/contact',(req,res, next)=>{
     // "logic to add contact"
     let newContact=new Contact({
         first_name:req.body.first_name,
@@ -64,6 +78,7 @@ router.post('/contact',(req,res, next)=>{
 
     })
 });
+
 
 router.delete('/deleteData', function (req, res) {
     console.log("idddddddddd", req.headers.id);
