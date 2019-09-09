@@ -72,13 +72,13 @@ app.controller('notepadCtrl', function($scope,$http, $window) {
         $scope.data = response.data.data;
         console.log(response);
         $window.location.reload();
-        
-  
+
+
       }, function myError(err) {
           console.log(err)
         // $scope.myWelcome = response.statusText;
-      
-  
+
+
     
   
         
